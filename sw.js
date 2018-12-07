@@ -60,3 +60,5 @@ self.addEventListener('fetch', function(event) {
             })
     );
 });
+
+//ToDo: add event for service worker messages
