@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Service worker demo</title>
+</head>
+<body>
+<p id="status"></p>
+<script>
+    let status = document.getElementById('status');
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js', {scope: '/'})
+            .then(function(regSW) {
+                // registration worked
+                console.log('Registration succeeded. Scope is ' + regSW.scope);
+                status.innerText = 'Hoorayyy!! Service worker has been registered';
+            }).catch(function(error) {
+            // registration failed
+            console.log('Registration failed with ' + error);
+            status.innerText = 'Oh Nooo!! Service worker failed registration';
+        });
+    }else{
+        alert('Service worker not supported on your browser, please upgrade to a current one');
+        location.replace("https://browsehappy.com/");
+    }
+</script>
+</body>
+</html>
